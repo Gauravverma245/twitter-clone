@@ -1,21 +1,31 @@
 import React from 'react'
 import './Post.css'
-import {forwardRef} from 'react'
+import PostEdit from './PostEdit'
 import { Avatar } from '@mui/material'
-import PublishIcon from '@mui/icons-material/Publish';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
 import RepeatIcon from '@mui/icons-material/Repeat'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import {useState} from 'react'
 
 
-const  Post = forwardRef(
-    ({
-        name,
-        username,
-        text
-}, ref) => {
+const Post = ({ postId, name, username, text, onDelete, onUpdate }) => {
+    const [showForm, setSetForm] = useState(false);
+
+    const deleteHandler = (e) => {
+        e.preventDefault();
+        onDelete(postId)
+    }
+
+    // const updateHandler = (e) => {
+    //     e.preventDefault();
+    //     console.log("clicked");
+    //     setSetForm(true)
+    //     // onUpdate(postId, text)
+    // }
+
     return (
-        <div className = "post" ref={ref}>
+        <div className = "post" >
             <div className = "post__avatar">
                 <Avatar 
                     src ="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
@@ -35,15 +45,16 @@ const  Post = forwardRef(
                         <p>{text}</p>
                     </div>
                 </div>
+                {showForm && <PostEdit/>}
                 <div className = "post__footer">
                     <ChatBubbleOutlineIcon fontSize = "small" /> 
                     <RepeatIcon fontSize = "small" />
-                    <FavoriteBorderIcon fontSize = "small" />
-                    <PublishIcon  fontSize = "small" /> 
+                    <EditIcon fontSize='small'/>
+                    <DeleteIcon onClick={deleteHandler} fontSize='small'/>
                 </div>
             </div>    
         </div>
     )
-})
+}
 
 export default Post

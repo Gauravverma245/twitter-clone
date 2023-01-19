@@ -2,9 +2,17 @@ import React from 'react'
 import './TweetBox.css'
 import { Button } from '@mui/material'
 import { Avatar } from '@mui/material';
+import { useState } from 'react';
 
-function TweetBox() {
-  const [twee]
+function TweetBox({onCreate}) {
+  const [tweetMessage, setTweetMessage] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onCreate(tweetMessage);
+    setTweetMessage("")
+  };
+  
   return (
     <div className='tweetBox'>
         <form>
@@ -13,21 +21,13 @@ function TweetBox() {
                         src = "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
                     />
                      <input 
-                        // onChange = {(e) => setTweetMessage(e.target.value)}
-                        // value = {tweetMessage} 
+                        onChange = {(e) => setTweetMessage(e.target.value)}
+                        value = {tweetMessage} 
                         placeholder = "What's happening" 
                         type = "text" 
                     />
         </div>
-        <input 
-                    // onChange = { (e) => setTweetImage(e.target.value) }
-                    // value = {tweetImage}
-                    className = "tweetBox__imageInput"
-                    placeholder = "Optional : Enter Image URL"
-                    type = "text"
-                />
-               <Button 
-                // onClick = { sendTweet }
+               <Button onClick={handleSubmit}
                 className = "tweetBox__tweetButton">Tweet</Button> 
         </form>
     </div>
