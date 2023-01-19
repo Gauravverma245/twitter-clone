@@ -4,34 +4,29 @@ import {forwardRef} from 'react'
 import { Avatar } from '@mui/material'
 import PublishIcon from '@mui/icons-material/Publish';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
-import VerifiedIcon from '@mui/icons-material/Verified'
 import RepeatIcon from '@mui/icons-material/Repeat'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 
 
 const  Post = forwardRef(
     ({
-        displayName,
+        name,
         username,
-        verified, 
-        text, 
-        image, 
-        avatar
+        text
 }, ref) => {
     return (
         <div className = "post" ref={ref}>
             <div className = "post__avatar">
                 <Avatar 
-                    src = {avatar}
+                    src ="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
                 />
             </div>
             <div className = "post__body">
                 <div className = "post__header">
                     <div className = "post__headerText">
                     <h3>
-                        {displayName}
+                        {name}
                             <span className = "post__headerSpecial">
-                                {verified && <VerifiedIcon className = "post__badge" />}
                                 @{username}
                             </span>
                     </h3>
@@ -40,10 +35,6 @@ const  Post = forwardRef(
                         <p>{text}</p>
                     </div>
                 </div>
-                <img 
-                    src = {image}
-                    alt = ""
-                />
                 <div className = "post__footer">
                     <ChatBubbleOutlineIcon fontSize = "small" /> 
                     <RepeatIcon fontSize = "small" />

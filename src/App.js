@@ -10,7 +10,7 @@ function App() {
       {/* Feed Section */}
       <Feed/>
       {/* Widgets */}
-      <Widgets/>
+      {/* <Widgets/> */}
     </div>
   );
 }
