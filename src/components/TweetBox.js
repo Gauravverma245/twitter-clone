@@ -4,12 +4,13 @@ import { Button } from '@mui/material'
 import { Avatar } from '@mui/material';
 
 function TweetBox() {
+  const [twee]
   return (
     <div className='tweetBox'>
         <form>
         <div className = "tweetBox__input">
                     <Avatar
-                        src = "https://pbs.twimg.com/profile_images/1266938830608875520/f-eajIjB_400x400.jpg"
+                        src = "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
                     />
                      <input 
                         // onChange = {(e) => setTweetMessage(e.target.value)}
